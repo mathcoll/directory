@@ -1,0 +1,26 @@
+{
+  "name": "directory",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "Mathieu Lory",
+    "email": "mathieu@internetcollaboratif.info"
+  },
+  "contributors": [],
+  "license": "GPL-3.0",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/mathcoll/directory/issues"
+  },
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "snyk test && ./bin/test.sh",
+    "check-security": "nsp check",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "dependencies": {},
+  "readmeFilename": "README.md",
+  "devDependencies": {},
+  "snyk": true
+}
