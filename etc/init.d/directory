@@ -19,6 +19,7 @@ BASE_URL="http://192.168.0.15:3001"
 BASE_URL_HTTPS="http://192.168.0.15:3001"
 DAEMON=/media/Documents/Projets/2018/directory/bin/www
 DAEMON_ARGS=""
+SECRET="1234"
 EXEC="/usr/bin/nodejs -- $DAEMON" # $DAEMON_ARGS >>$LOG 2>&1
 USER=root
 
@@ -31,6 +32,7 @@ do_start() {
 	export BASE_URL=$BASE_URL
 	export BASE_URL_HTTPS=$BASE_URL_HTTPS
 	export NAME=$NAME
+	export SECRET=$SECRET
 	export STARTED=`date +%s`
 	start-stop-daemon --start --background --make-pidfile --user "$USER" --pidfile $PIDFILE --exec $EXEC
 }
