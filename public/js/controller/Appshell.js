@@ -45,7 +45,7 @@ class Appshell {
 			attr = " target='_blank' rel='noopener'";
 		}
 		content += "<a href='"+options.url+"' "+attr+" class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect pull-right'>";
-		content += "	<i class='material-icons'>"+options.icon+"</i>";
+		content += "	<i class='material-icons'>launch</i>";
 		content += 		options.label;
 		content += "</a>";
 		return content;
@@ -53,7 +53,7 @@ class Appshell {
 	
 	getLabel(label, isClick) {
 		var content = "";
-		if (isClick!==false) content += "<a href='/labels/"+label+"'>";
+		if (isClick!==false) content += "<a href='"+window.location.hash.split('?')[0]+"?label="+label+"'>";
 		content += "	<span class='mdl-chip'>";
 		content += "		<span class='mdl-chip__text'>"+label+"</span>";
 		content += "	</span>";
@@ -152,7 +152,7 @@ class Appshell {
 			if (options.labels) {
 				var parent = this;
 				(options.labels).forEach(function(l) {
-					content += parent.getLabel(l, false);
+					content += parent.getLabel(l, true);
 				});
 			}
 			content += "</div>";

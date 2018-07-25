@@ -51,6 +51,21 @@ function fetchStatusHandler(response) {
 	}
 }; // fetchStatusHandler
 
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.hash.substring(1)),
+        sURLVariables = sPageURL.split('?'),
+        sParameterName,
+        i;
+    //console.log("DEBUG", sPageURL);
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+        //console.log("DEBUG", sParameterName);
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 (function() {
 	'use strict';
 	let appshell = new Appshell();
@@ -98,12 +113,13 @@ function fetchStatusHandler(response) {
 	var routeResources = {
 		path: '#/resources',
 		before: function() {
-			console.log("DEBUG", "before /resources");
+			console.log("DEBUG", "before /resources", getUrlParameter("label"));
 			appshell.setContent("main.main", "resources", "<section id='resources'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
 			appshell.getH1("#resources div.row", "All Resources", "col-md-12");
 
 			var myInit = { method: 'GET', headers: new Headers().append("Content-Type", "application/json") };
 			var url = app.baseUrl+'/'+app.api_version+'/resources/';
+			url += getUrlParameter("label")!=undefined?'?label='+getUrlParameter("label"):'';
 
 			fetch(url, myInit)
 			.then(
@@ -113,7 +129,7 @@ function fetchStatusHandler(response) {
 			})
 			.then(function(response) {
 				for (var i=0; i < (response).length ; i++) {
-					appshell.getCard("#resources div.row", {title: response[i].title!==null?response[i].title:'', subtitle: response[i].subtitle!==null?response[i].subtitle:'', type: response[i].type!==null?response[i].type:'', labels: response[i].labels!==null?response[i].labels:'', url: response[i].url!==null?response[i].url:'', color: response[i].color!==null?response[i].color:'', icon: response[i].icon!==null?response[i].icon:'', id: response[i].id!==null?response[i].id:'', footer: {icon: "link", label: response[i].title!==null?response[i].title:'', link: response[i].url!==null?response[i].url:'', ext: true}}, response[i].col!==null?response[i].col:'');
+					appshell.getCard("#resources div.row", {title: response[i].title!==null?response[i].title:'', subtitle: response[i].subtitle!==null?response[i].subtitle:'', type: response[i].type!==null?response[i].type:'', labels: response[i].labels!==null?response[i].labels:'', url: response[i].url!==null?response[i].url:'', color: response[i].color!==null?response[i].color:'', icon: response[i].icon!==null?response[i].icon:'', id: response[i].id!==null?response[i].id:'', footer: {icon: "link", label: 'www', link: response[i].url!==null?response[i].url:'', ext: true}}, response[i].col!==null?response[i].col:'');
 				}
 				this.task.done(response);
 			})
@@ -134,7 +150,7 @@ function fetchStatusHandler(response) {
 	var routeTypes = {
 		path: '#/types',
 		before: function() {
-			console.log("DEBUG", "before /types");
+			console.log("DEBUG", "before /types", getUrlParameter("label"));
 			appshell.setContent("main.main", "types", "<section id='types'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
 			appshell.getH1("#types div.row", "Resource types", "col-md-12");
 			
@@ -157,7 +173,7 @@ function fetchStatusHandler(response) {
 	var routeResourceTypes = {
 		path: '#/types/:type',
 		before: function() {
-			console.log("DEBUG", "before #/types/:type", this.params.type);
+			console.log("DEBUG", "before #/types/:type", this.params.type, getUrlParameter("label"));
 			appshell.setContent("main.main", "type", "<section id='type'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
 			
 			if ( this.params.type == "websites" || this.params.type == "articles" || this.params.type == "sensors" || this.params.type == "devices" || this.params.type == "terms" ) {
@@ -165,7 +181,8 @@ function fetchStatusHandler(response) {
 
 				var myInit = { method: 'GET', headers: new Headers().append("Content-Type", "application/json") };
 				var url = app.baseUrl+'/'+app.api_version+'/'+this.params.type+'/';
-
+				url += getUrlParameter("label")!=undefined?'?label='+getUrlParameter("label"):'';
+				
 				fetch(url, myInit)
 				.then(
 					fetchStatusHandler
@@ -174,7 +191,7 @@ function fetchStatusHandler(response) {
 				})
 				.then(function(response) {
 					for (var i=0; i < (response).length ; i++ ) {
-						appshell.getCard("#type div.row", {title: response[i].title, subtitle: response[i].subtitle, type: response[i].type!==null?response[i].type:'', labels: response[i].labels, url: response[i].url, color: response[i].color, icon: response[i].icon, id: response[i].id, footer: {icon: "link", label: response[i].title, link: response[i].url, ext: true}}, response[i].col);
+						appshell.getCard("#type div.row", {title: response[i].title, subtitle: response[i].subtitle, type: response[i].type!==null?response[i].type:'', labels: response[i].labels, url: response[i].url, color: response[i].color, icon: response[i].icon, id: response[i].id, footer: {icon: "link", label: "www", link: response[i].url, ext: true}}, response[i].col);
 					}
 					this.task.done(response);
 				})
@@ -199,7 +216,7 @@ function fetchStatusHandler(response) {
 	var routeLabels = {
 		path: '#/labels',
 		before: function() {
-			console.log("DEBUG", "before /labels");
+			console.log("DEBUG", "before /labels", getUrlParameter("label"));
 			appshell.setContent("main.main", "labels", "<section id='labels'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
 			appshell.getH1("#labels div.row", "Labels", "col-md-12");
 			appshell.getCard("#labels div.row", {title: "Labels", subtitle: "Subtitle", color: "success", icon: null}, "col-md-12");
