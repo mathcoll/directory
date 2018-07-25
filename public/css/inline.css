@@ -4,22 +4,34 @@
 	font-weight: 400;
 	src: url(https://fonts.gstatic.com/s/materialicons/v29/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
 }
+h2.card-title {
+	padding: 16px;
+}
 a:focus, a:hover {
     color: #fff !important;
     text-decoration: none !important;
 }
+.mdl-textfield.is-focused .mdl-textfield__expandable-holder, .mdl-textfield.is-dirty .mdl-textfield__expandable-holder {
+    max-width: 140px;
+}
 .mdl-layout__header-row {
     padding: 0 10px 0 0;
 }
-.mdl-layout__header-row .mdl-navigation {
-	align-items: normal !important;
-	margin: 3px 0;
+.mdl-textfield {
+    padding: 0 !important;
+}
+.mdl-navigation form {
+    margin-bottom: 0 !important;
 }
 .mdl-textfield--expandable .mdl-button--icon {
     top: 0px;
 }
 .mdl-textfield .mdl-button {
     position: absolute;
+}
+.mdl-layout__header-row .mdl-navigation {
+	align-items: normal !important;
+	margin: 10px 0;
 }
 .container-fluid {
     padding-right: 0 !important;
@@ -73,7 +85,7 @@ div.side-nav__body a.active {
     height: auto;
 }
 .mdl-layout__header-row .mdl-navigation__link {
-	line-height: 40px;
+	line-height: 50px;
 }
 a.side-nav__home {
 	background-image: url(/img/baseline-home-24px.svg) !important;

@@ -1,10 +1,12 @@
 # PWA version
-#uglifyjs \
-#	../public/js/controller/Appshell.js \
-#	../public/js/hash-router/hash-router.min.js \
-#	-o ../public/js/directory.min.js \
-#	-p 5 -m -c warnings=false
-#echo PWA Javascript minify: Completed
+uglifyjs \
+	../public/js/hash-router/hash-router.min.js \
+	../public/js/material.js \
+	../public/js/directory.js \
+	-o ../public/js/directory.min.js \
+	-p 5 -m -c warnings=false \
+#	> ../public/js/directory.min.js
+echo PWA Javascript minify: Completed
 
 uglifycss \
 	../public/css/material.min.css \

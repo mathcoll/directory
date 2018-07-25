@@ -68,7 +68,7 @@ function getUrlParameter(sParam) {
 
 (function() {
 	'use strict';
-	let appshell = new Appshell();
+	var appshell = new Appshell();
 
 	var route = {
 		path: '#/',
@@ -99,6 +99,7 @@ function getUrlParameter(sParam) {
 			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
 			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
 			*/
+			
 		},
 		on: function() {
 			console.log("DEBUG", "on /");
@@ -136,6 +137,7 @@ function getUrlParameter(sParam) {
 			.catch(function (error) {
 				this.task.done('error'+error);
 			});
+			
 		},
 		on: function() {
 			console.log("DEBUG", "on /resources");
@@ -159,6 +161,7 @@ function getUrlParameter(sParam) {
 			appshell.getCard("#types div.row", {title: "Sensors", subtitle: "Purchase sensors to build your own IoT.", type: 'sensors', color: "success", icon: null, id: null, footer: {icon: "usb", label: "Sensors"}, url: "/#/types/sensors"}, "col-md-4");
 			appshell.getCard("#types div.row", {title: "Devices", subtitle: "Devices resources and links to get ones.", type: 'devices', color: "success", icon: null, id: null, footer: {icon: "devices", label: "Devices"}, url: "/#/types/devices"}, "col-md-4");
 			appshell.getCard("#types div.row", {title: "Glossary", subtitle: "Glossary to understand all about your Things.", type: 'terms', color: "success", icon: null, id: null, footer: {icon: "title", label: "Terms"}, url: "/#/types/terms"}, "col-md-4");
+
 		},
 		on: function() {
 			console.log("DEBUG", "on /types");
@@ -177,7 +180,11 @@ function getUrlParameter(sParam) {
 			appshell.setContent("main.main", "type", "<section id='type'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
 			
 			if ( this.params.type == "websites" || this.params.type == "articles" || this.params.type == "sensors" || this.params.type == "devices" || this.params.type == "terms" ) {
-				appshell.getH1("#type div.row", (this.params.type).capitalize(), "col-md-12");
+				if ( !getUrlParameter("label") ) {
+					appshell.getH1("#type div.row", "All "+(this.params.type).capitalize(), "col-md-12");
+				} else {
+					appshell.getH1("#type div.row", (this.params.type).capitalize()+" on \""+getUrlParameter("label")+"\"", "col-md-12");
+				}
 
 				var myInit = { method: 'GET', headers: new Headers().append("Content-Type", "application/json") };
 				var url = app.baseUrl+'/'+app.api_version+'/'+this.params.type+'/';
@@ -202,6 +209,7 @@ function getUrlParameter(sParam) {
 			} else {
 				appshell.getCard("#type div.row", {title: "Error", subtitle: "Not Authorized", color: "danger", icon: "error"}, "col-md-12");
 			}
+
 		},
 		on: function() {
 			console.log("DEBUG", "on #/types/:type");
@@ -220,6 +228,7 @@ function getUrlParameter(sParam) {
 			appshell.setContent("main.main", "labels", "<section id='labels'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
 			appshell.getH1("#labels div.row", "Labels", "col-md-12");
 			appshell.getCard("#labels div.row", {title: "Labels", subtitle: "Subtitle", color: "success", icon: null}, "col-md-12");
+
 		},
 		on: function() {
 			console.log("DEBUG", "on /labels");
