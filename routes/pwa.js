@@ -14,13 +14,35 @@ router.get('/', function(req, res) {
 
 router.get('/v1.0.0/resources/:id([0-9a-z\-]+)?', function(req, res) {
 	var id = req.params.id;
+	var label = req.query.label;
 	var resources = db.getCollection('resources');
 	var resource;
+	
+	var query;
 	if ( id ) {
-		resource = resources.findOne({ 'id': id });
+		if ( label ) {
+			query = {
+				'$and': [
+						{ 'labels' : { '$contains' : label } },
+						{ 'id': id }
+					]
+				};
+		} else {
+			query = { 'id': id };
+		}
 	} else {
-		resource = resources.chain().find({}).simplesort('title', false).data();
+		if ( label ) {
+			query = {
+				'$and': [
+						{ 'labels' : { '$contains' : label } },
+					]
+				};
+		} else {
+			query = {};
+		}
 	}
+
+	resource = resources.chain().find(query).simplesort('title', false).data();
 	if ( resource ) {
 		res.status(200).send(resource); 
 	} else {
@@ -29,10 +51,36 @@ router.get('/v1.0.0/resources/:id([0-9a-z\-]+)?', function(req, res) {
 });
 
 router.get('/v1.0.0/?(:resource_type)?', function(req, res) {
+	var label = req.query.label;
+	var resource_type = req.params.resource_type;
 	res.setHeader("Content-Type", "application/json");
+	
+	var query;
+	if ( resource_type ) {
+		if ( label ) {
+			query = {
+				'$and': [
+						{ 'labels' : { '$contains' : label } },
+						{ 'type': resource_type }
+					]
+				};
+		} else {
+			query = { 'type': resource_type };
+		}
+	} else {
+		if ( label ) {
+			query = {
+				'$and': [
+						{ 'labels' : { '$contains' : label } },
+					]
+				};
+		} else {
+			query = { 'type': undefined };
+		}
+	}
+	
 	if ( req.params.resource_type===undefined || req.params.resource_type == "websites" || req.params.resource_type == "articles" || req.params.resource_type == "sensors" || req.params.resource_type == "devices" || req.params.resource_type == "terms" ) {
 		var resources = db.getCollection('resources');
-		var query = req.params.resource_type!==undefined?{"type": req.params.resource_type}:{};
 		var json = resources.chain().find(query).simplesort('title', false).data();
 		res.status(200).send(json);
 	} else {
