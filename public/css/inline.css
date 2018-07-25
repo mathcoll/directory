@@ -21,6 +21,17 @@ a:focus, a:hover {
 .mdl-textfield .mdl-button {
     position: absolute;
 }
+.container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
+    margin-top: -40px !important;
+    padding: 5px !important;
+}
+.material-icons {
+	vertical-align: middle;
+}
 .material-icons.md-28 {
     font-size: 28px;
 }
@@ -32,6 +43,10 @@ a:focus, a:hover {
 }
 .card .card-header .card-title {
     display: inline-block;
+}
+.card .card-header .card-title {
+	margin: 10px;
+    vertical-align: middle;
 }
 div.side-nav__body a {
 	line-height: 48px;
