@@ -8,6 +8,7 @@ var secret = process.env.SECRET; // That's a super bad security!
 router.get('/', function(req, res) {
 	res.render('index', {
 		currentUrl: req.path,
+		gtm: process.env.GTM,
 		user: req.session.user
 	});
 });
