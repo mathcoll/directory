@@ -246,9 +246,6 @@ function getUrlParameter(sParam) {
 		//console.log("DEBUG", "onChangeRoute", route);
 	};
 	Router.init(onChangeRoute);
-
-
-	appshell.getFooterOnce("#body");
 })();
 
 

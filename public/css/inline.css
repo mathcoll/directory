@@ -8,7 +8,6 @@ h2.card-title {
 	padding: 16px;
 }
 a:focus, a:hover {
-    color: #fff !important;
     text-decoration: none !important;
 }
 .mdl-textfield.is-focused .mdl-textfield__expandable-holder, .mdl-textfield.is-dirty .mdl-textfield__expandable-holder {
@@ -53,6 +52,12 @@ a:focus, a:hover {
 .material-icons.md-48 {
     font-size: 48px;
 }
+.material-icons.md-96 {
+    font-size: 96px;
+}
+.material-icons.md-128 {
+    font-size: 128px;
+}
 .card .card-header .card-title {
     display: inline-block;
 }
@@ -72,12 +77,13 @@ div.side-nav__body a {
 	text-align: left;
 	display: block;
 	border: none;
-	background: url(/images/ic_delete_24px.svg) 16px 12px no-repeat;
+	background: url(/img/ic_delete_24px.svg) 16px 12px no-repeat;
 	background-color: rgba(0, 0, 0, 0);
 	color: rgba(0,0,0,.87);
 	cursor: pointer;
 }
-div.side-nav__body a.active {
+div.side-nav__body a.active,
+div.side-nav__body a:hover {
     font-weight: 700;
     background-color: rgba(0,0,0,.05);
 }
@@ -86,6 +92,15 @@ div.side-nav__body a.active {
 }
 .mdl-layout__header-row .mdl-navigation__link {
 	line-height: 50px;
+}
+.mdl-layout__header-row {
+    height: 48px;
+    width: 100%;
+}
+@media screen and (max-width: 760px) {
+	a.mdl-navigation__link.side-nav__title.mdl-layout__tab {
+	    display: none;
+	}
 }
 a.side-nav__home {
 	background-image: url(/img/baseline-home-24px.svg) !important;
@@ -117,6 +132,11 @@ a.side-nav__label {
     float: right;
     margin: 0 12px;
 }
+.mdl-layout__header-row .setting_menu ul.mdl-menu li a.mdl-navigation__link {
+    display: block;
+    color: #000;
+    padding: 0 24px;
+}
 .header-image {
     background-image: url('/img/opl_img.jpg');
     background-size: cover;
@@ -131,6 +151,9 @@ a.side-nav__label {
     padding-top: 25vh;
     text-align: center;
     z-index: 3;
+}
+.header-image .motto > * {
+    background: #b3d4fc80;
 }
 .title-uppercase {
     text-transform: uppercase;
@@ -158,5 +181,4 @@ a.side-nav__label {
 .card-profile .card-avatar img {
     width: 120px !important;
     height: 120px !important;
-
 }

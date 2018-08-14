@@ -27,14 +27,18 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/app-shell","f3e482014a9d418bcb37183c0532c3d9"],["/images/apple-touch-icon.png","93cc57254abd8bc800d3f036988a6017"],["/images/chrome-splashscreen-icon-384x384.png","d7d245bf635378400d62c2bb45427a9b"],["/images/chrome-touch-icon-192x192.png","995f168d2886a3818805a4d191dc88c9"],["/images/ic_add_24px.svg","666d979e95d3a8492a58d71e0e8109a5"],["/images/ic_info_outline_24px.svg","2194d1db44e4ba5bcb521886efd346f8"],["/images/ic_menu_24px.svg","645f8625802f0e5e2e343f2e68d73d23"],["/images/icon-128x128.png","995a3abb3790865581bc854efd6de8ac"],["/images/ms-touch-icon-144x144-precomposed.png","2592058f2cda16473b512d2dcaaaeb1d"],["/images/side-nav-bg@2x.jpg","cdde67eaf65f1b2b0a7bb80a7b97fe07"],["/manifest.json","d99e4705e1bd12923bd154ec62a562f6"],["/old-sw.js","ec3d211e23f6f3de6a5ed71c19022df6"],["/partials/","60e6fac3d3fca4749d7c89770666f299"],["/partials/url-1","e01f3b2de9ec6b1417b623dd9da9593f"],["/partials/url-2","cb4d288fe4e98581061a4fea82e64324"],["/scripts/core.js","94c84380a5b6cf782844f4d6081696f3"],["/scripts/static-page.js","4ac7aed0082cf7f3528bfc2769d47448"],["/styles/core.css","ae15dd10a60a4370e1ae0833fe4d5df2"],["/third_party/serviceworker-cache-polyfill.js","6f6001b1e5e87cf387c79675781a3c7c"]];
+var PrecacheConfig = [
+    ["/manifest.json","manifest.json"],
+	["/js/directory.min.js","directory.min.js"],
+	["/js/controller/Appshell.js","Appshell.js"],
+	["/css/directory.min.css","directory.min.css"],
+	["/img/opl_img.jpg","opl_img.jpg"],
+	["/img/placeholder.png","placeholder.png"],
+	["/img/side-nav-bg@2x.jpg","side-nav-bg@2x.jpg"]
+];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1-app-shell-' + (self.registration ? self.registration.scope : '') + '-';
-
-
 var IgnoreUrlParametersMatching = [/^utm_/];
-
-
 
 var addDirectoryIndex = function (originalUrl, index) {
     var url = new URL(originalUrl);

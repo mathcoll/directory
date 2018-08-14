@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/#/resources</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/#/types/websites</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/#/types/articles</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/#/types/sensors</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/#/types/devices</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+<url>
+  <loc>http://iot-directory.internetcollaboratif.info/#/types/terms</loc>
+  <lastmod>2018-08-05T15:39:50+00:00</lastmod>
+</url>
+
+</urlset>
