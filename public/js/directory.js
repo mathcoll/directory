@@ -70,7 +70,7 @@ function getUrlParameter(sParam) {
 	'use strict';
 	var appshell = new Appshell();
 
-	var route = {
+	var routeHome = {
 		path: '#/',
 		before: function() {
 			console.log("DEBUG", "before /");
@@ -78,28 +78,37 @@ function getUrlParameter(sParam) {
 			appshell.getHeader("#home div.row", {title: "Internet of Thing Directory", subtitle: "IoT websites, links, glossary, devices and sensors."});
 
 			appshell.getH1("#home div.row", "Directory sections", "col-md-12");
-			appshell.getCard("#home div.row", {title: "Websites", subtitle: "List Websites related to IoT.", type: 'websites', color: "success", icon: null, id: null, footer: {icon: "link", label: "Websites"}, url: "/#/types/websites"}, "col-md-4");
-			appshell.getCard("#home div.row", {title: "Articles", subtitle: "IoT online usefull articles.", type: 'articles', color: "success", icon: null, id: null, footer: {icon: "link", label: "Articles"}, url: "/#/types/articles"}, "col-md-4");
-			appshell.getCard("#home div.row", {title: "Sensors", subtitle: "Purchase sensors to build your own IoT.", type: 'sensors', color: "success", icon: null, id: null, footer: {icon: "usb", label: "Sensors"}, url: "/#/types/sensors"}, "col-md-4");
-			appshell.getCard("#home div.row", {title: "Devices", subtitle: "Devices resources and links to get ones.", type: 'devices', color: "success", icon: null, id: null, footer: {icon: "devices", label: "Devices"}, url: "/#/types/devices"}, "col-md-4");
-			appshell.getCard("#home div.row", {title: "Glossary", subtitle: "Glossary to understand all about your Things.", type: 'terms', color: "success", icon: null, id: null, footer: {icon: "title", label: "Terms"}, url: "/#/types/terms"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Websites", subtitle: "List Websites related to IoT.", type: 'websites', color: "success", icon: null, id: null, footer: {icon: "link", label: "Websites"}, url: "/#!/types/websites"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Articles", subtitle: "IoT online usefull articles.", type: 'articles', color: "success", icon: null, id: null, footer: {icon: "link", label: "Articles"}, url: "/#!/types/articles"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Sensors", subtitle: "Purchase sensors to build your own IoT.", type: 'sensors', color: "success", icon: null, id: null, footer: {icon: "usb", label: "Sensors"}, url: "/#!/types/sensors"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Devices", subtitle: "Devices resources and links to get ones.", type: 'devices', color: "success", icon: null, id: null, footer: {icon: "devices", label: "Devices"}, url: "/#!/types/devices"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Glossary", subtitle: "Glossary to understand all about your Things.", type: 'terms', color: "success", icon: null, id: null, footer: {icon: "title", label: "Terms"}, url: "/#!/types/terms"}, "col-md-4");
 
-			/*
-			appshell.getCard("#home div.row", {title: "Home Card", subtitle: "Subtitle", type: null, color: "success", icon: null, id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-12");
-			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
-			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
-			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
-			
-			appshell.getH1("#home div.row", "Section 2", "col-md-12");
-			appshell.getProfile("#home div.row", {profile: {image: '/img/opl_img.jpg', title: 'title', name: 'name name', description: 'Vivamus nec dolor et tellus pharetra suscipit. Fusce felis sem, gravida quis euismod non, lobortis a risus. Aenean pellentesque, nisi mollis consequat fringilla, dui metus iaculis eros, nec dictum urna elit laoreet purus. Etiam gravida sed lacus et dignissim. Ut laoreet dui ac tortor laoreet euismod.'}, id: '', footer: {icon: "info", label: "Action button"}, url: "/#" }, "col-md-6");
-			appshell.getProfile("#home div.row", {profile: {image: '/img/opl_img.jpg', title: 'title', name: 'name name', description: 'Vivamus nec dolor et tellus pharetra suscipit. Fusce felis sem, gravida quis euismod non, lobortis a risus. Aenean pellentesque, nisi mollis consequat fringilla, dui metus iaculis eros, nec dictum urna elit laoreet purus. Etiam gravida sed lacus et dignissim. Ut laoreet dui ac tortor laoreet euismod.'}, id: '', footer: {icon: "info", label: "Action button"}, url: "/#" }, "col-md-6");
-			
-			appshell.getH1("#home div.row", "Section 3", "col-md-12");
-			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
-			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
-			appshell.getCardStat("#home div.row", {title: "Statistics", subtitle: "Subtitle", type: null, color: "success", icon: "devices_other", id: '', footer: {icon: "info", link: "/#", label: "Action button"}}, "col-md-4");
-			*/
-			
+		},
+		on: function() {
+			console.log("DEBUG", "on /");
+		},
+		after: function() {
+			console.log("DEBUG", "after /");
+		},
+		config: {}
+	}
+	Router.add(routeHome);
+	
+	var route = {
+		path: '#!/',
+		before: function() {
+			console.log("DEBUG", "before /");
+			appshell.setContent("main.main", "home", "<section id='home'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
+			appshell.getHeader("#home div.row", {title: "Internet of Thing Directory", subtitle: "IoT websites, links, glossary, devices and sensors."});
+
+			appshell.getH1("#home div.row", "Directory sections", "col-md-12");
+			appshell.getCard("#home div.row", {title: "Websites", subtitle: "List Websites related to IoT.", type: 'websites', color: "success", icon: null, id: null, footer: {icon: "link", label: "Websites"}, url: "/#!/types/websites"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Articles", subtitle: "IoT online usefull articles.", type: 'articles', color: "success", icon: null, id: null, footer: {icon: "link", label: "Articles"}, url: "/#!/types/articles"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Sensors", subtitle: "Purchase sensors to build your own IoT.", type: 'sensors', color: "success", icon: null, id: null, footer: {icon: "usb", label: "Sensors"}, url: "/#!/types/sensors"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Devices", subtitle: "Devices resources and links to get ones.", type: 'devices', color: "success", icon: null, id: null, footer: {icon: "devices", label: "Devices"}, url: "/#!/types/devices"}, "col-md-4");
+			appshell.getCard("#home div.row", {title: "Glossary", subtitle: "Glossary to understand all about your Things.", type: 'terms', color: "success", icon: null, id: null, footer: {icon: "title", label: "Terms"}, url: "/#!/types/terms"}, "col-md-4");
+
 		},
 		on: function() {
 			console.log("DEBUG", "on /");
@@ -112,7 +121,7 @@ function getUrlParameter(sParam) {
 	Router.add(route);
 	
 	var routeResources = {
-		path: '#/resources',
+		path: '#!/resources',
 		before: function() {
 			console.log("DEBUG", "before /resources", getUrlParameter("label"));
 			appshell.setContent("main.main", "resources", "<section id='resources'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
@@ -150,7 +159,7 @@ function getUrlParameter(sParam) {
 	Router.add(routeResources);
 	
 	var routeTypes = {
-		path: '#/types',
+		path: '#!/types',
 		before: function() {
 			console.log("DEBUG", "before /types", getUrlParameter("label"));
 			appshell.setContent("main.main", "types", "<section id='types'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
@@ -174,7 +183,7 @@ function getUrlParameter(sParam) {
 	Router.add(routeTypes);
 	
 	var routeResourceTypes = {
-		path: '#/types/:type',
+		path: '#!/types/:type',
 		before: function() {
 			console.log("DEBUG", "before #/types/:type", this.params.type, getUrlParameter("label"));
 			appshell.setContent("main.main", "type", "<section id='type'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
@@ -222,7 +231,7 @@ function getUrlParameter(sParam) {
 	Router.add(routeResourceTypes);
 	
 	var routeLabels = {
-		path: '#/labels',
+		path: '#!/labels',
 		before: function() {
 			console.log("DEBUG", "before /labels", getUrlParameter("label"));
 			appshell.setContent("main.main", "labels", "<section id='labels'><div class='content'><div class='container-fluid'><div class='row'></div></div></div></section>");
@@ -239,7 +248,6 @@ function getUrlParameter(sParam) {
 		config: {}
 	}
 	Router.add(routeLabels);
-
 
 	//init rule with onRouteChange
 	var onChangeRoute = function(route) {

@@ -34,15 +34,16 @@ html.ltr(lang='en')
     meta(name='msapplication-TileImage', content='#{baseUrlCdn}/img/m/icons/icon-152x152.png')
 
   body#body
-    noscript
-      iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-KF4F6FB', height='0', width='0', style='display:none;visibility:hidden')
+    if gtm
+      noscript
+        iframe(src='//www.googletagmanager.com/ns.html?id=GTM-KF4F6FB', height='0', width='0', style='display:none;visibility:hidden')
     header.header
       div.mdl-layout__header-row
         div.mdl-layout__tab-bar-container
           .mdl-layout__tab-bar.mdl-js-ripple-effect.mdl-js-tabs
             button.header__menu.js-toggle-menu(role='tab')
               i.material-icons menu
-            a.mdl-navigation__link.side-nav__title.mdl-layout__tab(tabindex='0', href='#/', for='index')  IoT Directory
+            a.mdl-navigation__link.side-nav__title.mdl-layout__tab(tabindex='0', href='#!/', for='index')  IoT Directory
             div.mdl-layout-spacer
             nav.mdl-navigation
               form
@@ -59,7 +60,7 @@ html.ltr(lang='en')
         .setting_menu
           ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for='menu')
             li.mdl-js-ripple-effect.mdl-menu__item.mdl-layout--small-screen-only.statusButton
-              a.mdl-navigation__link.mdl-layout__tab(tabindex='1', href='#/resources', for='resources')
+              a.mdl-navigation__link.mdl-layout__tab(tabindex='1', href='#!/resources', for='resources')
                 i.material-icons list
                 |  All Resources
             
@@ -75,17 +76,17 @@ html.ltr(lang='en')
           i.material-icons.md-96 store
           h2 IoT Directory
         .side-nav__body
-          a.side-nav__home(role='tab', tabindex='0', href='#/', for='index') Index
-          //-a.side-nav__resource(role='tab', tabindex='1', href='#/resources', for='resources') All Resources
-          //-a.side-nav__type(role='tab', tabindex='2', href='#/types', for='types') Resources Types
+          a.side-nav__home(role='tab', tabindex='0', href='#!/', for='index') Index
+          //-a.side-nav__resource(role='tab', tabindex='1', href='#!/resources', for='resources') All Resources
+          //-a.side-nav__type(role='tab', tabindex='2', href='#!/types', for='types') Resources Types
           
-          a.side-nav__type(role='tab', tabindex='3', href='#/types/websites', for='websites') Websites
-          a.side-nav__type(role='tab', tabindex='4', href='#/types/articles', for='articles') Articles
-          a.side-nav__type(role='tab', tabindex='5', href='#/types/sensors', for='sensors') Sensors
-          a.side-nav__type(role='tab', tabindex='6', href='#/types/devices', for='devices') Devices
-          a.side-nav__type(role='tab', tabindex='7', href='#/types/terms', for='terms') Glossary
+          a.side-nav__type(role='tab', tabindex='3', href='#!/types/websites', for='websites') Websites
+          a.side-nav__type(role='tab', tabindex='4', href='#!/types/articles', for='articles') Articles
+          a.side-nav__type(role='tab', tabindex='5', href='#!/types/sensors', for='sensors') Sensors
+          a.side-nav__type(role='tab', tabindex='6', href='#!/types/devices', for='devices') Devices
+          a.side-nav__type(role='tab', tabindex='7', href='#!/types/terms', for='terms') Glossary
           
-          //-a.side-nav__label(role='tab', tabindex='3', href='#/labels', for='labels') Labels
+          //-a.side-nav__label(role='tab', tabindex='3', href='#!/labels', for='labels') Labels
         .side-nav__version Version 1.0.0
           .copyright.pull-right &copy; 2018, Mathcoll
 
