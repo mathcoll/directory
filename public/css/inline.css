@@ -109,6 +109,9 @@ a.side-nav__resource {
 	background-image: url(/img/baseline-list-24px.svg) !important;
 }
 a.side-nav__type {
+	background-image: url(/img/baseline-brightness_1-24px.svg) !important;
+}
+a.side-nav__toc {
 	background-image: url(/img/baseline-toc-24px.svg) !important;
 }
 a.side-nav__label {

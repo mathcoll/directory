@@ -16,6 +16,10 @@ router.get('/', function(req, res) {
 router.get('/v1.0.0/resources/:id([0-9a-z\-]+)?', function(req, res) {
 	var id = req.params.id;
 	var label = req.query.label;
+	var size = req.query.size!==undefined?req.query.size:20;
+	var page = req.query.page!==undefined?req.query.page:1;
+	page = page>0?page:1;
+	var offset = Math.ceil(size*(page-1));
 	var resources = db.getCollection('resources');
 	var resource;
 	
@@ -43,9 +47,14 @@ router.get('/v1.0.0/resources/:id([0-9a-z\-]+)?', function(req, res) {
 		}
 	}
 
-	resource = resources.chain().find(query).simplesort('title', false).data();
+	resource = resources.chain().find(query).offset(offset).limit(size).simplesort('title', false).data();
 	if ( resource ) {
-		res.status(200).send(resource); 
+		var pagination = {
+				page: page,
+				size: size,
+		};
+		console.log(resource);
+		res.status(200).send({resource, pagination: pagination}); 
 	} else {
 		res.status(404).send({'id': 40, 'code': 404, 'message': 'Not Found'});
 	}
@@ -83,7 +92,7 @@ router.get('/v1.0.0/?(:resource_type)?', function(req, res) {
 	if ( req.params.resource_type===undefined || req.params.resource_type == "websites" || req.params.resource_type == "articles" || req.params.resource_type == "sensors" || req.params.resource_type == "devices" || req.params.resource_type == "terms" ) {
 		var resources = db.getCollection('resources');
 		var json = resources.chain().find(query).simplesort('title', false).data();
-		res.status(200).send(json);
+		res.status(200).send(json); 
 	} else {
 		res.status(404).send({'id': 41, 'code': 404, 'message': 'Not Found'});
 	}
