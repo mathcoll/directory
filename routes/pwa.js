@@ -13,6 +13,12 @@ router.get('/', function(req, res) {
 	});
 });
 
+router.get('/terms', function(req, res) {
+	res.render('terms', {
+		currentUrl: req.path,
+	});
+});
+
 router.get('/v1.0.0/resources/:id([0-9a-z\-]+)?', function(req, res) {
 	var id = req.params.id;
 	var label = req.query.label;
