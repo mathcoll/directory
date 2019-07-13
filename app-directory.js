@@ -75,6 +75,7 @@ app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
 app.use(session(sessionSettings));
 app.use(express.static(path.join(__dirname, '/public'), staticOptions));
+app.use("/.well-known", express.static(path.join(__dirname, "/.well-known"), staticOptions));
 app.use('/', pwa);
 
 // catch 404 and forward to error handler
