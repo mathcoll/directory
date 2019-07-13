@@ -95,7 +95,14 @@ router.get('/v1.0.0/?(:resource_type)?', function(req, res) {
 		}
 	}
 	
-	if ( req.params.resource_type===undefined || req.params.resource_type == "websites" || req.params.resource_type == "articles" || req.params.resource_type == "sensors" || req.params.resource_type == "devices" || req.params.resource_type == "terms" ) {
+	if (
+		req.params.resource_type===undefined ||
+		req.params.resource_type == "websites" ||
+		req.params.resource_type == "articles" ||
+		req.params.resource_type == "sensors" ||
+		req.params.resource_type == "devices" ||
+		req.params.resource_type == "terms"
+		) {
 		var resources = db.getCollection('resources');
 		var json = resources.chain().find(query).simplesort('title', false).data();
 		res.status(200).send(json); 
@@ -111,8 +118,8 @@ router.post('/v1.0.0/resources', function(req, res) {
 			id:			uuid.v4(),
 			type: 		req.body.type,
 			title:		req.body.title!==undefined?req.body.title:'',
-			subtitle:  	req.body.subtitle!==undefined?req.body.subtitle:'',
-			url:  		req.body.url!==undefined?req.body.url:'',
+			subtitle:	req.body.subtitle!==undefined?req.body.subtitle:'',
+			url:		req.body.url!==undefined?req.body.url:'',
 			labels:		req.body.labels!==undefined?req.body.labels:new Array(),
 			color:		req.body.color!==undefined?req.body.color:"success",
 			col:		req.body.col!==undefined?req.body.col:"col-md-12",
