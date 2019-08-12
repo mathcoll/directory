@@ -37,7 +37,7 @@ a:focus, a:hover {
     padding-left: 0 !important;
 }
 .card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
-    margin-top: -40px !important;
+    margin: -30px 15px 0 -25px !important !important;
     padding: 5px !important;
 }
 .material-icons {
